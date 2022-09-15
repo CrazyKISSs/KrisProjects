@@ -4,11 +4,22 @@ package module6.t02;
  * Составить класс для автомобиля с произвольными параметрами и конструкторами
  */
 
-public class Car {
+public class Car implements CarCar {
     private String model;
     private String color;
     private int yearOfEdition;
     private int engineNumber;
+
+    @Override
+    public int compareTo(Car o) {
+
+        return this.model.compareToIgnoreCase(o.getModel());
+    }
+    @Override
+    public int compareTo(Object o) {
+        return 0;
+    }
+
     private enum AutoClass{
         MINI_A,
         SMALL_B,
@@ -84,10 +95,6 @@ public class Car {
     public String toString() {
         return "Car{" +
                 "model='" + model + '\'' +
-                ", color='" + color + '\'' +
-                ", yearOfEdition=" + yearOfEdition +
-                ", engineNumber=" + engineNumber +
-                ", autoClass=" + autoClass +
                 '}';
     }
 
@@ -99,6 +106,5 @@ public class Car {
         System.out.println(car);
         System.out.println(car2);
     }
-
 
 }
